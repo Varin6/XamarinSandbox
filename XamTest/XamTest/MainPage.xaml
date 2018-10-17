@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XamTest"
+             x:Class="XamTest.MainPage"
+             BackgroundImage = "nigel_bg.png">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add Item"
+                     Activated="ToolbarItem_Activated"
+                     />
+    </ContentPage.ToolbarItems>
+
+    <ListView x:Name="booksListView">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <ViewCell.ContextActions>
+                        <MenuItem Clicked="OnMore" CommandParameter="{Binding .}"
+               Text="More" />
+                        <MenuItem Clicked="OnDelete" CommandParameter="{Binding .}"
+               Text="Delete" IsDestructive="True" />
+                    </ViewCell.ContextActions>
+                    <StackLayout Padding="12,0" Orientation="Vertical">
+                        <Label Text="{Binding Name}"
+                               TextColor="#ffffff"/>
+                        <Label Text="{Binding Author}"
+                               TextColor="#eeeeee"
+                               FontSize="6"/>
+                    </StackLayout>
+                </ViewCell>
+                <!--<TextCell Text="{Binding Name}"
+                          Detail="{Binding Author}"/>-->
+            </DataTemplate>
+        </ListView.ItemTemplate>        
+    </ListView>
+
+</ContentPage>
